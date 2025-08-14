@@ -10,6 +10,9 @@ maszyna wirtualna w VirtualBox z terminalem systemu Windows na dysku twardym.
 
 -przy wyłączonej maszynie wirtualnej, w VirtualBox w ustawieniach *Sieć* w polu > Podłączona do
  zmieniamy wartość z NAT na > Mostkowana karta sieciowa(bridged).
+***Ważne: jeśli w Twoim przypadku sieć mostkowana z kartą Realtec Wifi nie odczytuje IP Twojej sieci Wifi to zmień ustawienia sieci w VirtualBox na NAT.
+To pozwoli zachować stabilne połączenie Fedory z Internetem.*** Mostkowaną sieć można nadal testować jako opcję eksperymentalną do nauki konfigyracji LAN
+i serwerów.
 -w polu > Nazwa
 zaznaczamy sieć Wifi(u mnie Realtec xxx Wifi xxx). To spowoduje, że Fedora zainstalowana jako maszyna wirtualna w VirtualBox jest teraz jakby kolejnym
 urządzeniem podpiętym pod sieć Wifi.
