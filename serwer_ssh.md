@@ -46,4 +46,31 @@ Jeśli nie(enabled itp.) to wówczas należy uruchomić serwer SSH ręcznie pole
 Następnie jeśli chcemy aby serwer SSH startował automatycznie z każdym uruchomieniem Fedory to musimy użyć polecenia 'sudo systemctl enable sshd'
 
 Teraz np. z innego laptopa podłączonego do tej samej sieci na którym nie ma zainstalowanej Fedory możemy połączyć się z wirtualną Fedorą na innym komputerze
-podłączonym do tej samej sieci.
+podłączonym do tej samej sieci. Rzecz jasna pod warunkiem, że mamy włączoną sieć mostkowaną w VirtualBox. Przy samym NAT to nie zadziała chyba, że 
+w VirtualBox w zakładce Expert włączymy przekierowanie portów(to będzie działało na zasadzie rozszerzonej karty sieciowej NAT o mostkowanie).
+
+###Warto jeszcze dodać czym jest **enp0s3**
+enp0s3 to nazwa wirtualnej karty sieciowej. Maszyna wirtualna(Fedora) pokazuje to nazwę po wpisaniu polecenia 'ip a'. Wówczas można zobaczyć IP Fedory.
+enp0s3 to skrót od: 
+**en**-Ethernet(przewodowe połączenie sieciowe)
+**p0**-karta znajduje się na szynie PCI **slot0**
+**s3**-port 3 
+
+Co to jest **PCI**?
+**PCI(Peripheral Component Interconnect)** to standard komunikacji pomiędzy płytą główną a różnymi urządzeniami w komputerze.
+Jest to **"szyna'** czyli zestaw przewodów i sygnałów, który umożliwia przesyłanie danych pomiędzy procesorem, pamięcią RAM, a urządzeniami
+peryferyjnymi. Zatem kiedy maszyna wirtualna pokazuje np. **enp0s3** to wówczas wiadomo, że karta sieciowa jest podłączona do "pierwszej" szyny PCI
+w konfiguracji wirtualnej. Recz jasna na Twoim komputerze może znajdować się zupełnie inna nazwa karty sieciowej.
+
+Co to jest **Slot 0**?
+W realnym komputerze **slot PCI** to fizyczne gniazdo do którego można włożyć kartę sieciową, karte dźwiękową, kartę graficzną, karte SSD itd.
+W VirtualBox i maszynach wirtualnych(VM) sloty PCI są wirtualne. Symulowane przez oprogramowanie. Przykładowo, gdy dana maszyna wirtualna jest zainstalowana
+w VirtualBox to wówczas VirtualBox podpina po dnią różnego rodzaju urządzenia jak właśnie karty sieciowe, kontrolery, karty dźwiękowe, graficzne, itd. Ale są
+to w rzeczywistości urządzenia wyłącznie wirtualne. Ale właśnie tak zainstalowana np. Fedora "widzi" je jakby były podpięte fiycznie do komputera.
+Zatem jeśli mamy zainstalowany system Linux jako maszynę wirtualną i chcemy poznać listę wszystkich wirtualnych urządzeń podpiętych pod nią przez VirtualBox
+to wystarczy w terminalu użyć polecenia 'lscpi'. Wówczas na pierwszym miejscu zobaczymy najważniejsze urządzenie wirtualne czyli **Host Bridge** 
+Powyższe polecenie wyświetla urządzenia wirtualne w hierarchi.
+W realnym PC widzielibyśmy po wydaniu polecenia 'lscpi' np. kartę graficzną NVIDIA, kontroler USB, kartę sieciową Intel, itd. A w VirtualBox widzimy ich
+wirtualne odpowiedniki.
+Jeśli zainstalujemy Fedorę jako maszynę wirtualną w VirtualBox to w VirtualBox zobaczymy jej plik Fedora.vdi
+Jest to wirtualny dysk twardy,na którym działa Linux.
