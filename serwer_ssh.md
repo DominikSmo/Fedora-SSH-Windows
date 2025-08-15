@@ -74,3 +74,14 @@ W realnym PC widzielibyśmy po wydaniu polecenia 'lscpi' np. kartę graficzną N
 wirtualne odpowiedniki.
 Jeśli zainstalujemy Fedorę jako maszynę wirtualną w VirtualBox to w VirtualBox zobaczymy jej plik Fedora.vdi
 Jest to wirtualny dysk twardy,na którym działa Linux.
+W VirtualBox można podpiąc aż 4 karty sieciowe. NAT działa najstabilniej jeśli chcemy mieć połączenie z Interntem i serwisem Github. Sieć mostkowana tak jak 
+wspomniałem nie zawsze jest w stanie podłączyć się do sieci Wifi. Jest jeszcze karta sieciowa sieci izolowanej Host-Only.O ile w przypadku karty NAT nie możemy
+terminalowo połączyć się z systemem Windows tak jak w przypadku karty mostkowanej tak z ustawioną kartą Host-Only można to zrobić. Czyli w przypadku kart sieciowych
+mostkowanej i Host-Only możemy połaczyć się terminalowo z Fedory z Windows za pomocą serwera SSH. To czym się one różnią? Przede wszystkim tym, że gdy połaczymy się
+przez sieć Bridge to nasza Fedora jest widoczna w naszej sieci Wifi i w razie cyber-ataku nasz wirtualny system Linux może zostać także zaatakowany. To znaczy gdyby
+np. ktoś zainfekował wirusem naszą sieć Wifi to wówczas Fedora, która jest podpięta pod nią też może ulec zainfekowaniu wirusem. 
+Jeżeli natomiast połączymy się z kartą Host-Only to wówczas nasz wirtualny Linux nie będzie widoczny w naszej sieci Wifi. Stąd nazwa sieci: "izolowana".
+
+Jeżeli zatem w VirtualBox podłączymy np. 3 karty sieciowe to wówczas po poleceniu **ip a** pokażą się nam numery wszystkich podpiętych wirtualnych kart sieciowych.
+U mnie to będzie enp0s3(NAT), enp0s8(Host-Only), enp0s9(Bridge).
+Zatem gdy chcemy połączyć Windows z Fedorą wówczas użyjemy sieci mostkowanej(Bridge) bądź sieci izolowanej Host-Only.
