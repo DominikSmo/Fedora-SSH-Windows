@@ -5,6 +5,6 @@
 -**Konfiguracja serwera SSH w wirtualnej Fedorze**
 -**Połączenie wirtualnej Fedory z systemem Windows komputera**
 
-# **Autor**
+ **Autor**
 Dominik Smolik-repozytorium w ramach nauki administracją systemem Linux
 
